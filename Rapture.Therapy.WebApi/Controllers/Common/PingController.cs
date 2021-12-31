@@ -10,11 +10,19 @@ namespace Rapture.Therapy.WebApi.Controllers.Common
     [ApiController]
     public class PingController : ControllerBase
     {
+        private ILogger<PingController> Logger { get; }
+
+        public PingController(ILogger<PingController> logger)
+        {
+            Logger = logger;
+        }
 
         [HttpGet]
         public ActionResult<PingResponseDto> Get([FromHeader(Name = EadentHeaders.SessionTokenName)] string? sessionToken)
         {
             var stopWatch = Stopwatch.StartNew();
+
+            Logger.LogInformation($"{nameof(PingController)}: sessionToken = {sessionToken}");
 
             ActionResult<PingResponseDto> response;
 

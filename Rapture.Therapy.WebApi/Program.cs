@@ -1,4 +1,11 @@
+using NLog.Web;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// NLog: Setup NLog for Dependency Injection.
+builder.Logging.ClearProviders();
+builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+builder.Host.UseNLog();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
