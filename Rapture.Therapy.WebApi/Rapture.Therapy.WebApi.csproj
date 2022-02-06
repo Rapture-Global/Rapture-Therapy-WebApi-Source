@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eadent.Common\Eadent.Common.csproj" />
+    <ProjectReference Include="..\Eadent.Identity\Eadent.Identity.csproj" />
   </ItemGroup>
 
 </Project>
