@@ -3,6 +3,7 @@ using Eadent.Common.WebApi.Definitions;
 using Eadent.Common.WebApi.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Rapture.Therapy.WebApi.Controllers.Common
 {
@@ -28,10 +29,14 @@ namespace Rapture.Therapy.WebApi.Controllers.Common
 
             int httpStatusCode = StatusCodes.Status400BadRequest;
 
+            var assembly = Assembly.GetExecutingAssembly();
+            var fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            var fileVersion = fileVersionInfo.FileVersion;
+
             var responseDto = new PingResponseDto()
             {
                 RemoteIpAddress = HttpHelper.GetRemoteAddress(Request),
-                SoftwareVersion = "V0.0"
+                SoftwareVersion = $"V{fileVersion}"
             };
 
             if (sessionToken == null)

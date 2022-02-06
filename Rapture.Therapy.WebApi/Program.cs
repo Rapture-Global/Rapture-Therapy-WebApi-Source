@@ -1,4 +1,5 @@
 using NLog.Web;
+using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,5 +31,13 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
+
+
+var blockBytes = new byte[] { 0x00, 0x01, 0x02 };
+
+SHA512 sha = SHA512.Create();
+var referenceHashBytes = sha.ComputeHash(blockBytes);
+var referenceHashBase64 = Convert.ToBase64String(referenceHashBytes);
+
 
 app.Run();
