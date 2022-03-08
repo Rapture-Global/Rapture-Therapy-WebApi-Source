@@ -19,7 +19,7 @@ namespace Rapture.Therapy.WebApi.Controllers.Common
         }
 
         [HttpGet]
-        public ActionResult<PingResponseDto> Get([FromHeader(Name = EadentHeaders.SessionTokenName)] string? sessionToken)
+        public ActionResult<PingResponseDto> Ping([FromHeader(Name = EadentHeaders.SessionTokenName)] string? sessionToken)
         {
             var stopWatch = Stopwatch.StartNew();
 
@@ -35,7 +35,7 @@ namespace Rapture.Therapy.WebApi.Controllers.Common
 
             var responseDto = new PingResponseDto()
             {
-                RemoteIpAddress = HttpHelper.GetRemoteAddress(Request),
+                RemoteIpAddress = HttpHelper.GetRemoteIpAddress(Request),
                 SoftwareVersion = $"V{fileVersion}"
             };
 
@@ -46,7 +46,7 @@ namespace Rapture.Therapy.WebApi.Controllers.Common
             else
             {
                 // TODO: VALIDATE: Signed In Session.
-                responseDto.LocalIpAddress = HttpHelper.GetLocalAddress(Request);
+                responseDto.LocalIpAddress = HttpHelper.GetLocalIpAddress(Request);
 
                 httpStatusCode = StatusCodes.Status200OK;
             }

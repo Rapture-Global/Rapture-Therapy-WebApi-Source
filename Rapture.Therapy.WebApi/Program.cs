@@ -1,7 +1,18 @@
+using Eadent.Identity.Configuration;
 using NLog.Web;
 using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.AddJsonFile("Confidential/Eadent.Identity.settings.json", optional: false, reloadOnChange: false);
+
+var services = builder.Services;
+
+var eadentIdentitySettingsSection = builder.Configuration.GetSection(EadentIdentitySettings.SectionName);
+
+services.Configure<EadentIdentitySettings>(eadentIdentitySettingsSection);
+
+Eadent.Identity.Startup.ConfigureServices(services, eadentIdentitySettingsSection.Get<EadentIdentitySettings>());
 
 // NLog: Setup NLog for Dependency Injection.
 builder.Logging.ClearProviders();
