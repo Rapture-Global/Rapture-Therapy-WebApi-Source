@@ -12,7 +12,7 @@ var eadentIdentitySettingsSection = builder.Configuration.GetSection(EadentIdent
 
 services.Configure<EadentIdentitySettings>(eadentIdentitySettingsSection);
 
-Eadent.Identity.Startup.ConfigureServices(services, eadentIdentitySettingsSection.Get<EadentIdentitySettings>());
+Eadent.Identity.Startup.ConfigureServices(services);
 
 // NLog: Setup NLog for Dependency Injection.
 builder.Logging.ClearProviders();
