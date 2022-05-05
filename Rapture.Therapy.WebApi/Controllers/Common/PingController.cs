@@ -41,12 +41,15 @@ namespace Rapture.Therapy.WebApi.Controllers.Common
 
             if (sessionToken == null)
             {
+                responseDto.SetSuccess();
+
                 httpStatusCode = StatusCodes.Status200OK;
             }
             else
             {
                 // TODO: VALIDATE: Signed In Session.
                 responseDto.LocalIpAddress = HttpHelper.GetLocalIpAddress(Request);
+                responseDto.SetSuccess();
 
                 httpStatusCode = StatusCodes.Status200OK;
             }
