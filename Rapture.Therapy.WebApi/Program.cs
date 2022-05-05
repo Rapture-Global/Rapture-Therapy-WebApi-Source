@@ -8,9 +8,7 @@ builder.Configuration.AddJsonFile("Confidential/Eadent.Identity.settings.json", 
 
 var services = builder.Services;
 
-var eadentIdentitySettingsSection = builder.Configuration.GetSection(EadentIdentitySettings.SectionName);
-
-services.Configure<EadentIdentitySettings>(eadentIdentitySettingsSection);
+builder.Configuration.GetSection(EadentIdentitySettings.SectionName).Get<EadentIdentitySettings>();
 
 Eadent.Identity.Startup.ConfigureServices(services);
 

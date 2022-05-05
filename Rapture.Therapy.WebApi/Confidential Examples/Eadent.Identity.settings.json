@@ -15,7 +15,9 @@
           "SiteSalt": "",
           "IterationCount": 1000,
           "NumDerivedKeyBytes": 128
-        }
+        },
+        // Users having a Role Level <= this value are considered Privileged.
+        "RoleLevelPrivilegedThresholdInclusive": 3000
       },
       "Account": {
         "SignInErrorLimit": 10,
