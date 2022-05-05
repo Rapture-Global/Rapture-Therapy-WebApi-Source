@@ -1,0 +1,29 @@
+{
+  "EadentIdentity": {
+    "UserIdentity": {
+      "Database": {
+        "DatabaseServer": "",
+        "DatabaseName": "",
+        "DatabaseSchema": "Dad_Identity",
+        "ApplicationName": "Eadent.Identity",
+        "UserName": "",
+        "Password": ""
+      },
+      "Security": {
+        "Hasher": {
+          "PasswordSalt": "",
+          "SiteSalt": "",
+          "IterationCount": 1000,
+          "NumDerivedKeyBytes": 128
+        }
+      },
+      "Account": {
+        "SignInErrorLimit": 10,
+        "SignInLockOutDurationSeconds": 600,
+        "SessionExpirationDurationSeconds": 1200,
+        "PasswordResetExpirationDurationSeconds": 1200,
+        "SignInUrl": ""
+      }
+    }
+  }
+}
